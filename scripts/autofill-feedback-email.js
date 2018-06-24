@@ -26,7 +26,7 @@ if (isCI) {
   ])
   const timeoutId = setTimeout(() => {
     console.log(
-      `\n\nprompt timed out. No worries. Run \`node ./scripts/autofill-feedback-email.js\` if you'd like to try again`,
+      `\n\nprompt timed out. No worries. Run \`node ./scripts/autofill-feedback-email.js\` if you'd like to try again`
     )
     prompt.ui.close()
   }, 15000)
@@ -47,7 +47,7 @@ if (isCI) {
       changedFiles => {
         console.log(`Updated ${changedFiles.length} with the email ${email}`)
         console.log(
-          'committing changes for you so your jest watch mode works nicely',
+          'committing changes for you so your jest watch mode works nicely'
         )
         spawn.sync('git', ['commit', '-am', 'email autofill', '--no-verify'], {
           stdio: 'inherit',
@@ -56,7 +56,7 @@ if (isCI) {
       error => {
         console.error('Failed to update files')
         console.error(error.stack)
-      },
+      }
     )
   })
 }
