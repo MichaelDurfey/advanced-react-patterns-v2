@@ -14,21 +14,10 @@ class Toggle extends React.Component {
       on: false,
     }
   }
-  
-  // 🐨 this toggle component is going to need to have state for `on`
-  //
-  // You'll also want a method to handle when the switch is clicked
-  // which will update the `on` state and call the `onToggle` prop
-  // with the new `on` state.
-  //
-  // 💰 this.setState(newState, callback)
-  //
-  // The `callback` should be where you call `this.props.onToggle(this.state.on)`
-  //
-  // 💯 Use a state updater function for `newState` to avoid issues with batchings
-  handleClick() {
-    this.setState({
-      on: !this.state.on,
+  // Use an updater function when referencing current state and updating it to avoid batching issues
+  handleClick = () => {
+    this.setState((currentState) => {
+      return {on: !currentState.on}
     }, () => {
       this.props.onToggle(this.state.on)
     })
@@ -38,7 +27,7 @@ class Toggle extends React.Component {
     // 🐨 here you'll want to return the switch with the `on` and `onClick` props
     return(
       <div>
-        <Switch on={this.state.on} onClick={() => this.handleClick()}/>
+        <Switch on={this.state.on} onClick={this.handleClick}/>
       </div>
     )
   }
